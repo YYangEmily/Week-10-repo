@@ -1,0 +1,32 @@
+---
+title: "Generalized Linear Models"
+author: "Emily Yang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Generalized Linear Models
+Generalized glm instead of lm. Specify link function which "transforms" data to function normally
+
+Doesn't require normally distributed errors and residuals. 
+Don't need homogeneity of variance across catagories.
+
+```{r}
+library(curl)
+f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN588_Fall21/graddata.csv")
+d <- read.csv(f, header = TRUE, sep = ",")
+head(d)
+
+# glm of admit~gre
+glm <- glm(data = d, admit ~ gre, family = "binomial")
+summary(glm)
+
+```
+
+
+
+
